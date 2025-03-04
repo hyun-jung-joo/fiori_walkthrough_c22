@@ -10,13 +10,27 @@
       data-sap-ui-libs="sap.m"
       data-sap-ui-compat-version="edge"
       data-sap-ui-async="true"
-      data-sap-ui-on-init="module:ui5/walkthrough_c22/index"
+      data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
       data-sap-ui-resource-roots='{
 			"ui5.walkthrough_c22": "./"
 		}'
     ></script>
+    <!-- 이제 위에서 Component.js 를 로드해온다 -> ComponentSupport를 통해 -->
   </head>
 
   <!-- <div>Hello World</div> -->
-  <body class="sapUiBody" id="content"></body>
+  <body class="sapUiBody" id="content">
+    <!-- data-sap-ui-component 속성을 사용해서 해당 Component.js 실행하도록 설정 
+         data-name : 로드할 컴포넌트의 네임스페이스
+         data-id : 컴포넌트 id 를 지정 (필수 아님 / div 식별을 위함) 
+         data-settings : 컴포넌트에 전달할 설정 값
+    -->
+
+    <div
+      data-sap-ui-component
+      data-name="ui5.walkthrough_c22"
+      data-id="container"
+      data-settings='{ "id" : "walkthrough_c22" }'
+    ></div>
+  </body>
 </html>
