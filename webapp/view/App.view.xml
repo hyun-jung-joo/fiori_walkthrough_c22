@@ -1,7 +1,11 @@
 <mvc:View 
+    controllerName="ui5.walkthrough_c22.controller.App"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Text text="Hello World" />
+    <Button 
+        text="Say Hello"
+        press=".onShowHello"></Button>
 </mvc:View>
 
-<!-- xmlns = xml의 namespace(별명) -->
+<!-- Controller 를 연결할 수 있다 !! 
+    Button 의 press를 통해 버튼을 눌렀을 때의 이벤트 메소드를 지정  -->
