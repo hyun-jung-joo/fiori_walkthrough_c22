@@ -1,9 +1,15 @@
-sap.ui.define(["sap/ui/core/mvc/XMLView"], (XMLView) => {
+sap.ui.define(["sap/ui/core/ComponentContainer"], (ComponentContainer) => {
   "use strict";
 
-  XMLView.create({
-    viewName: "ui5.walkthrough_c22.view.App",
-    // view Name 을 지정해서 view를 불러온다.
-  }).then((oView) => oView.placeAt("content"));
-  // 불러왔으면, index.html의 content부분에 view가 나오게 한다.
+  new ComponentContainer({
+    name: "ui5.walkthrough_c22", // ui5.walkthrough_c22 : webapp 폴더
+    // Component.js 는 정해진 이름과 확장자여서 이름을 적지 않는다.
+    settings: {
+      id: "walkthrough_c22",
+    },
+    async: true,
+  }).placeAt("content"); // 이 내용을 content 로
 });
+
+// ComponentContainer 를 불러오는 거로 변경해준다.
+// 폴더만 지정해준다면 알아서 Container.js 를 찾아서 호출한다.
