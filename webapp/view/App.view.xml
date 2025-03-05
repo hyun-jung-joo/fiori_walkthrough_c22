@@ -14,6 +14,10 @@
                         <mvc:XMLView
                             viewName="ui5.walkthrough_c22.view.HelloPanel"
                         />
+                        <!-- InvoiceList.view.xml 을 중첩 -->
+                        <mvc:XMLView
+                            viewName="ui5.walkthrough_c22.view.InvoiceList"
+                        />
                     </content>
                 </Page>
             </pages>
