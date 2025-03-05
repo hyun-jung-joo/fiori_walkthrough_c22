@@ -6,8 +6,8 @@ sap.ui.define([], () => {
         // statusText 라는 함수를 정의하고 sStatus를 매개변수로 함.
         // sStatus 값은 InvoiceList를 통해 전달 받는다.
         statusText(sStatus) {
+            // getOwnerComponent -> Component.js 로 접근
             // i18n 에 있는 모든 내용들을 가지고 온다.
-            // Component.js 로 접근해서 !
             const oResourceBundle = this.getOwnerComponent()
                 .getModel("i18n")
                 .getResourceBundle();
