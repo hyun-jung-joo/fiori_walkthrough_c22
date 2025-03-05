@@ -1,14 +1,14 @@
 sap.ui.define(["sap/ui/core/ComponentContainer"], (ComponentContainer) => {
-  "use strict";
+    "use strict";
 
-  new ComponentContainer({
-    name: "ui5.walkthrough_c22", // ui5.walkthrough_c22 : webapp 폴더
-    // Component.js 는 정해진 이름과 확장자여서 이름을 적지 않는다.
-    settings: {
-      id: "walkthrough_c22",
-    },
-    async: true,
-  }).placeAt("content"); // 이 내용을 content 로
+    new ComponentContainer({
+        name: "ui5.walkthrough_c22", // ui5.walkthrough_c22 : webapp 폴더
+        // Component.js 는 정해진 이름과 확장자여서 이름을 적지 않는다.
+        settings: {
+            id: "walkthrough_c22",
+        },
+        async: true,
+    }).placeAt("content"); // 이 내용을 content 로
 });
 
 // ComponentContainer 를 불러오는 거로 변경해준다.

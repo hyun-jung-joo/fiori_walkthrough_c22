@@ -1,8 +1,8 @@
 {
-  "name": "ui5.walkthrough_c22",
-  "version": "1.0.0",
-  "description": "The UI5 walkthrough application",
-  "scripts": {
-    "start": "ui5 serve -o index.html"
-  }
+    "name": "ui5.walkthrough_c22",
+    "version": "1.0.0",
+    "description": "The UI5 walkthrough application",
+    "scripts": {
+        "start": "ui5 serve -o index.html"
+    }
 }
