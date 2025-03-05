@@ -20,6 +20,17 @@ sap.ui.define(
         // MessageToast 내용으로 위의 정의한 sMsg 로 바꿔준다.
         MessageToast.show(sMsg);
       },
+
+      // 비동기로 버튼 클릭했을 때 Dialog를 화면에 띄우는 메소드 구현
+      async onOpenDialog() {
+        // oDialog 객체가 없다면 새롭게 생성
+        // 객체가 있다면 아래 부분은 실행하지 않고 마지막의 open만 실행
+        // await 때문에 loadFragment 가 끝날때까지 대기를 한다.
+        this.oDialog ??= await this.loadFragment({
+          name: "ui5.walkthrough_c22.view.HelloDialog", // Dialog view 경로
+        });
+        this.oDialog.open(); // Dialog open
+      },
     });
   }
 );
