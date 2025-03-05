@@ -6,6 +6,15 @@
         id="helloDialog"
         title="Hello {/recipient/name}"
     >
+        <!-- Dialog 내부 내용에 icon, text 를 추가 -->
+        <content>
+            <core:Icon
+                src="sap-icon://hello-world"
+                size="3rem"
+                class="sapUiMediumMargin"
+            />
+            <Text text="Hello-world" />
+        </content>
         <beginButton>
             <Button
                 text="{i18n>dialogCloseButtonText}"
