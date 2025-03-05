@@ -5,6 +5,13 @@
     <Dialog
         id="helloDialog"
         title="Hello {/recipient/name}"
-    />
+    >
+        <beginButton>
+            <Button
+                text="{i18n>dialogCloseButtonText}"
+                press=".onCloseDialog"
+            />
+        </beginButton>
+    </Dialog>
 </core:FragmentDefinition>
 <!-- 팝업창 view 를 구현 (fragment) -->

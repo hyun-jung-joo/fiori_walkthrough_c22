@@ -31,6 +31,15 @@ sap.ui.define(
         });
         this.oDialog.open(); // Dialog open
       },
+
+      onCloseDialog() {
+        // id 로 Dialog 를 찾기
+        // 찾는 걸 성공하면 close.
+        var oDialog = this.byId("helloDialog");
+        if (oDialog) {
+          oDialog.close();
+        }
+      },
     });
   }
 );
