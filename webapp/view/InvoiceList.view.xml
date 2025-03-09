@@ -34,6 +34,10 @@
         </headerToolbar>
 
         <items>
+            <!--
+                item 을 선택가능하게 만들기 위해 type을 Navigation 또는 Action 으로 지정. 
+                press 했을 때 onPress 메소드가 실행되도록 한다. 
+            -->
             <ObjectListItem
                 title="{invoice>Quantity} x {invoice>ProductName}"
                 number="{
@@ -48,6 +52,8 @@
                 }"
                 numberUnit="{view>/currency}"
                 numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+                type="Navigation"
+                press=".onPress"
             >
                 <firstStatus>
                     <!-- 

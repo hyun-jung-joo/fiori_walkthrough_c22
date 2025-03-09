@@ -23,7 +23,10 @@ sap.ui.define(
                 const oModel = new JSONModel(oData);
                 this.setModel(oModel); // 이 앱에 model을 선언(뷰에 선언이 아니고)
 
-                // i18n 에 대한 부분 없애기 -> manifest.json 으로 이동
+                // router 초기화
+                // manifest.json 에 정의된 라우터를 가지고 와서
+                // 현재 URL을 확인하고 해당하는 뷰(View)를 자동 로드
+                this.getRouter().initialize();
             },
         });
     }

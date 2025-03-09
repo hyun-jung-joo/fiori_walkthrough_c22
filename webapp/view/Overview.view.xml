@@ -1,0 +1,16 @@
+<mvc:View
+    controllerName="ui5.walkthrough_c22.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+>
+    <!-- 기본 화면으로 지정 -->
+    <Page title="{i18n>homePageTitle}">
+        <content>
+            <!-- HelloPanel을 내부에 넣어두기 -->
+            <mvc:XMLView viewName="ui5.walkthrough_c22.view.HelloPanel" />
+            <!-- InvoiceList을 내부에 넣어두기 -->
+            <mvc:XMLView viewName="ui5.walkthrough_c22.view.InvoiceList" />
+        </content>
+    </Page>
+</mvc:View>

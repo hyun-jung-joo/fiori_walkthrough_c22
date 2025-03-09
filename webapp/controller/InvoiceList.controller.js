@@ -40,6 +40,16 @@ sap.ui.define(
                 const oBinding = oList.getBinding("items"); // 그 리스트 안에서 items를 찾는다.
                 oBinding.filter(aFilter); // items에 필터링 적용
             },
+
+            // item 을 눌렀을 때 일어나는 event 
+            // detail view 로 이동하게 구현한다. 
+            onPress() {
+                // OwnerComponent는 manifest.json에서 설정한 다양한 정보를 가지고 옴.
+			    // 그 중 manifest.json에서 설정한 Routing에 관련된 객체를 가지고오기 -> getRouter()
+                const oRouter = this.getOwnerComponent().getRouter(); 
+                oRouter.navTo("detail");  // manifest.json 의 routes 부분에서 name의 값이 detail 인 것으로 이동
+                                          // 그 다음에 해당 항목의 Target으로 현재 Page를 교체 
+            },
         });
     }
 );

@@ -6,21 +6,10 @@
 >
     <!-- 양 옆 공간을 두기 위해 Shell 사용 -->
     <Shell>
-        <App class="myAppDemoWT">
-            <pages>
-                <Page title="{i18n>homePageTitle}">
-                    <content>
-                        <!-- HelloPanel.view.xml 을 중첩시킨다 -->
-                        <mvc:XMLView
-                            viewName="ui5.walkthrough_c22.view.HelloPanel"
-                        />
-                        <!-- InvoiceList.view.xml 을 중첩 -->
-                        <mvc:XMLView
-                            viewName="ui5.walkthrough_c22.view.InvoiceList"
-                        />
-                    </content>
-                </Page>
-            </pages>
-        </App>
+        <!-- id 를 추가한다. routing에 controlId로 사용한다. (manifest.json) -->
+        <App
+            class="myAppDemoWT"
+            id="app"
+        />
     </Shell>
 </mvc:View>
