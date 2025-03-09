@@ -43,12 +43,24 @@ sap.ui.define(
 
             // item 을 눌렀을 때 일어나는 event 
             // detail view 로 이동하게 구현한다. 
-            onPress() {
+            onPress(oEvent) {
+                const oItem = oEvent.getSource(); // Source -> 출처(이벤트가 발생한 근원지)
+                const oContext = oItem.getBindingContext("invoice") // invoice 모델로 연결된 내용 가져오기
+                const sPath = oContext.getPath(); // 현재 클릭한 부분의 경로 가져오기 
+                const sPathEx = sPath.substring(1); // 첫번째 글자를 뺀 나머지 -> ~~/~~ 
+                const oParam = {
+                    invoicePath : window.encodeURIComponent(sPathEx) 
+                    // detail 의 파라미터 invoicePath에 값 집어넣기
+                    // 이때, uri 로 encoding 해서 전달해줘야함 
+                };
+
                 // OwnerComponent는 manifest.json에서 설정한 다양한 정보를 가지고 옴.
 			    // 그 중 manifest.json에서 설정한 Routing에 관련된 객체를 가지고오기 -> getRouter()
                 const oRouter = this.getOwnerComponent().getRouter(); 
-                oRouter.navTo("detail");  // manifest.json 의 routes 부분에서 name의 값이 detail 인 것으로 이동
-                                          // 그 다음에 해당 항목의 Target으로 현재 Page를 교체 
+                
+                // manifest.json 의 routes 부분에서 name의 값이 detail 인 것으로 이동
+                // 이때 이번에는 invoicePath 의 파라미터까지 같이 전달한다. 
+                oRouter.navTo("detail", oParam);  
             },
         });
     }

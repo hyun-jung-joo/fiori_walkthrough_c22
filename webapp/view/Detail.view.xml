@@ -1,9 +1,13 @@
 <mvc:View
+    controllerName="ui5.walkthrough_c22.controller.Detail"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
 >
     <!-- Detail 화면 -->
     <Page title="{i18n>detailPageTitle}">
-        <ObjectHeader title="Invoice" />
+        <!-- 클릭한 invoice에 해당하는 필드 값들을 사용하기  -->
+        <ObjectHeader 
+            intro="{invoice>ShipperName}"
+            title="{invoice>ProductName}" />
     </Page>
 </mvc:View>
