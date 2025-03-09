@@ -4,10 +4,16 @@
     xmlns:mvc="sap.ui.core.mvc"
 >
     <!-- Detail 화면 -->
-    <Page title="{i18n>detailPageTitle}">
+    <!-- showNavButton 을 true로 하면 뒤로가기 버튼이 생기고, 눌렀을 때의 대한 이벤트를 설정해준다. -->
+    <Page
+        title="{i18n>detailPageTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+    >
         <!-- 클릭한 invoice에 해당하는 필드 값들을 사용하기  -->
-        <ObjectHeader 
+        <ObjectHeader
             intro="{invoice>ShipperName}"
-            title="{invoice>ProductName}" />
+            title="{invoice>ProductName}"
+        />
     </Page>
 </mvc:View>
