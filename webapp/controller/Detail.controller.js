@@ -44,7 +44,7 @@ sap.ui.define(
                     // 페이지 이동 기록이 없을 때 = 무조건 overview로 이동 시킴
                     const oRouter = this.getOwnerComponent().getRouter();
                     // navTo(route 이름, 전달한 parameter 값, 이동 기록 초기화 -> true)
-                    oRouter.navTo("overview", {}, true);
+                    oRouter.navTo("overview", {}, true); // true 까지 써야지 초기화가 됨
                 }
             },
         });

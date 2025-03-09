@@ -4,11 +4,9 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
 >
-    <!-- 정렬과 그룹화를 지정할 건데, tutorial이랑 다르게 
-        ShipperName으로 그룹화 하고, ProductName 으로 내림차순 정렬함 -->
-    <List
+    <!-- Table로 변경해준다. -->
+    <Table
         id="invoiceList"
-        headerText="{i18n>invoiceListTitle}"
         class="sapUiResponsiveMargin"
         width="auto"
         items="{
@@ -32,48 +30,93 @@
                 />
             </Toolbar>
         </headerToolbar>
+        <!-- columns  -->
+        <columns>
+            <Column
+                hAlign="End"
+                minScreenWidth="Small"
+                demandPopin="true"
+                width="5em"
+            >
+                <Text text="{i18n>columnQuantity}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>columnName}" />
+            </Column>
+            <Column
+                minScreenWidth="Small"
+                demandPopin="true"
+            >
+                <Text text="{i18n>columnStatus}" />
+            </Column>
+            <Column
+                minScreenWidth="Tablet"
+                demandPopin="false"
+            >
+                <Text text="{i18n>columnSupplier}" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="{i18n>columnPrice}" />
+            </Column>
+        </columns>
 
+        <!-- items -->
         <items>
             <!--
-                item 을 선택가능하게 만들기 위해 type을 Navigation 또는 Action 으로 지정. 
-                press 했을 때 onPress 메소드가 실행되도록 한다. 
+                ColumnListItem으로 변경해주기 
             -->
-            <ObjectListItem
-                title="{invoice>Quantity} x {invoice>ProductName}"
-                number="{
-                    parts : [
-                        'invoice>ExtendedPrice', 
-                        'view>/currency'
-                    ], 
-                    type : 'sap.ui.model.type.Currency',
-                    formatOptions : {
-                        showMeasure : false
-                    }
-                }"
-                numberUnit="{view>/currency}"
-                numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+            <ColumnListItem
                 type="Navigation"
                 press=".onPress"
             >
-                <firstStatus>
+                <cells>
+                    <!-- 1. Qunatity -->
+                    <ObjectNumber
+                        number="{invoice>Quantity}"
+                        emphasized="false"
+                    />
+                    <!-- 2. Name -->
+                    <ObjectIdentifier title="{invoice>ProductName}" />
                     <!-- 
+                        3. Status -> status
                         path에 정해진 값을 statusText의 파라미터(sStatus)로 넘겨준다
                         formatter 안에서 this를 쓰고 싶다면 어떤 컨트롤러 인지 bind를 통해 넘겨줘야 한다. 
                         그 후에 formatter 에서 나온 결과 값을 다시 받아서 Status 로 출력한다. 
 
                         core:require 로는 외부에서 값을 읽어 올 수 있다. (여기서는 formatter.js에서 값을 가져옴)
                     -->
-                    <ObjectStatus
+                    <Text
                         core:require="{
-                        Formatter : 'ui5/walkthrough_c22/model/formatter'
-                    }"
+                            Formatter : 'ui5/walkthrough_c22/model/formatter'
+                        }"
                         text="{ 
-                        path: 'invoice>Status', 
-                        formatter : 'Formatter.statusText.bind($controller)'
-                    }"
+                            parts : ['invoice>Status',
+                                    'i18n>invoiceStatusA', 
+                                    'i18n>invoiceStatusB',
+                                    'i18n>invoiceStatusC'
+                                    ], 
+                            formatter : 'Formatter.statusText.bind($controller)'
+                        }"
                     />
-                </firstStatus>
-            </ObjectListItem>
+                    <!-- 4. Supplier -->
+                    <Text text="{invoice>ShipperName}" />
+                    <!-- 5. Price -->
+                    <ObjectNumber
+                        number="{
+                            parts : [
+                                'invoice>ExtendedPrice', 
+                                'view>/currency'
+                            ], 
+                            type : 'sap.ui.model.type.Currency',
+                            formatOptions : {
+                                showMeasure : false
+                            }
+                        }"
+                        unit="{view>/currency}"
+                        state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+                    />
+                </cells>
+            </ColumnListItem>
         </items>
-    </List>
+    </Table>
 </mvc:View>
